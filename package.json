@@ -12,7 +12,8 @@
     "url": "https://github.com/leitingting08/sum-cli"
   },
   "files": [
-    "lib"
+    "generators",
+    "src"
   ],
   "dependencies": {},
   "scripts": {
