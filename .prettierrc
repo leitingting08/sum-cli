@@ -7,6 +7,5 @@
   "bracketSpacing": true,
   "jsxBracketSameLine": true,
   "arrowParens": "always",
-  "parser": "typescript",
   "requirePragma": false
 }

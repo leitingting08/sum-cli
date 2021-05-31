@@ -1,5 +1,7 @@
 # sum-cli
 
+![](/example.png)
+
 ## Installation
 
 ```bash

@@ -60,15 +60,15 @@ const SUM_PROMPTS = [
         type: 'list',
         choices: [
             {
-                name: 'Vue 2',
+                name: 'Vue 2 + Javascript + Less',
                 value: 'vue2'
             },
             {
-                name: 'Vue 3',
+                name: 'Vue 3 + Javascript + Less',
                 value: 'vue3'
             },
             {
-                name: 'React 17',
+                name: 'React 17 + Javascript + Less + Antd',
                 value: 'react17'
             }
         ]
