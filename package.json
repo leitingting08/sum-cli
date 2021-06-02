@@ -1,6 +1,6 @@
 {
   "name": "sum-cli",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "license": "MIT",
   "main": "src/index.js",
   "bin": {
@@ -11,10 +11,6 @@
     "type": "git",
     "url": "https://github.com/leitingting08/sum-cli"
   },
-  "files": [
-    "generators",
-    "src"
-  ],
   "dependencies": {},
   "scripts": {
     "lint": "eslint --fix",
@@ -42,9 +38,6 @@
   },
   "engines": {
     "node": ">=10.12"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
   },
   "husky": {
     "hooks": {
