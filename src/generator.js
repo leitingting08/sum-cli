@@ -68,6 +68,14 @@ const SUM_PROMPTS = [
                 value: 'vue3'
             },
             {
+                name: 'Vue 3 + Typescript + Sass + ElementPlus',
+                value: 'vue3_ts'
+            },
+            {
+              name: 'Vue 3 + Typescript + Sass + ElementPlus + Vite',
+              value: 'vue3_vite'
+          },
+            {
                 name: 'React 17 + Javascript + Less + Antd',
                 value: 'react17'
             }
@@ -91,6 +99,18 @@ const sumGenerator = (name) => {
                     successInfo(name)
                 })
                 break
+            case 'vue3_ts':
+              fsExtra.copy(path.resolve(__dirname, '../generators/vue3_ts'), `./${name}`, (err) => {
+                  if (err) return log.error(err)
+                  successInfo(name)
+              })
+              break
+            case 'vue3_vite':
+              fsExtra.copy(path.resolve(__dirname, '../generators/vue3_vite'), `./${name}`, (err) => {
+                  if (err) return log.error(err)
+                  successInfo(name)
+              })
+              break
             case 'react17':
                 fsExtra.copy(path.resolve(__dirname, '../generators/react17'), `./${name}`, (err) => {
                     if (err) return log.error(err)

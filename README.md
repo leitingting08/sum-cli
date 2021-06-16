@@ -7,7 +7,7 @@
 ```bash
 npm i -g sum-cli
 # or
-yarn global add sum-cli
+yarn global add sum-cli 
 ```
 
 ## View version
@@ -46,4 +46,20 @@ sum init --git <project-name>
 sum init -l <project-name>
 # or
 sum init --local <project-name>
+```
+
+## use npx
+
+```bash
+# or
+npx sum init <project-name>
+# or
+npx sum init -g <project-name>
+# or
+npx sum init --git <project-name>
+# or
+npx sum init -l <project-name>
+# or
+npx sum init --local <project-name>
+
 ```
