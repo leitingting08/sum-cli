@@ -7,9 +7,6 @@
 # npm
 node_modules
 
-# lib
-/lib
-
 # test
 /coverage
 /test/.temp
