@@ -1,4 +1,4 @@
-import asyncLoad from '@/utils/asyncComponent'
+import { lazy } from 'react'
 
 const checkLoginState = (replaceState) => {
     console.log('route to login page here')
@@ -11,12 +11,12 @@ const rootRoute = {
         // 检查登录状态
         checkLoginState(replaceState)
     },
-    component: asyncLoad(() => import('@/pages/home/index')),
+    component: lazy(() => import('@/pages/home/index')),
     childRoutes: [
         {
             path: '/route',
-            component: asyncLoad(() => import('@/pages/home/index')),
-            childRoutes: [{ path: '/route/subroute', component: asyncLoad(() => import('@/pages/page1/index')) }]
+            component: lazy(() => import('@/pages/home/index')),
+            childRoutes: [{ path: '/route/subroute', component: lazy(() => import('@/pages/page1/index')) }]
         },
         // 这里相当于redirect, 放404
         {
