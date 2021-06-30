@@ -13,21 +13,21 @@ import { message } from 'antd'
  * 可根据需求扩展其他字段
  */
 const request = (method = 'get', url, data = {}, options) => {
-    if (options && options.isLoading) {
-        Loading.open()
+  if (options && options.isLoading) {
+    Loading.open()
+  }
+  axios({
+    method,
+    url,
+    data
+  }).then((res) => {
+    Loading.close()
+    if (res.success) {
+      return res.data
+    } else {
+      message.error(res.desc || '请求失败')
     }
-    axios({
-        method,
-        url,
-        data
-    }).then((res) => {
-        Loading.close()
-        if (res.success) {
-            return res.data
-        } else {
-            message.error(res.desc || '请求失败')
-        }
-    })
+  })
 }
 
 export default request
