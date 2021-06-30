@@ -2,20 +2,14 @@ import React, { useState, useEffect } from 'react'
 import ProLayout, { PageContainer } from '@ant-design/pro-layout'
 import MENU from './menu'
 import { Layout } from 'antd'
-import { Link, Route, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 const { Content } = Layout
 
 const BaseLayout = (props) => {
-    const { accountInfo, routes } = props
+    const { accountInfo, children } = props
     const [ready, setReady] = useState(false)
     const [pathname, setPathname] = useState('/')
 
-    const getRoute = (routes) => {
-        return routes.reduce((prev, cur) => {
-            return Array.isArray(cur.childRoutes) ? [...prev, ...cur.childRoutes] : [...prev]
-        }, [])
-    }
-    // console.log(routes)
     const location = useLocation()
     useEffect(() => {
         setReady(true)
@@ -66,11 +60,7 @@ const BaseLayout = (props) => {
                         </Link>
                     )}>
                     <PageContainer />
-                    <Content className="content_container">
-                        {getRoute(routes.childRoutes).map(({ path, component }, index) => {
-                            return <Route path={path} component={component} key={index} />
-                        })}
-                    </Content>
+                    <Content className="content_container">{children}</Content>
                 </ProLayout>
             </div>
         )

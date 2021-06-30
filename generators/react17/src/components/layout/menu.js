@@ -1,25 +1,15 @@
 const MENU = [
     {
-        name: '菜单1',
-        key: 'menu1',
-        path: '/route',
+        name: '素材管理',
+        key: 'material',
+        path: '/material',
         children: [
             {
-                name: '子菜单1',
-                key: 'submenu1',
-                path: '/route/subroute'
-            },
-            {
-                name: '子菜单2',
-                key: 'submenu2',
-                path: '/route/subroute'
+                name: '素材列表',
+                key: 'material/list',
+                path: '/material/list'
             }
         ]
-    },
-    {
-        name: '菜单2',
-        key: 'home',
-        path: '/'
     }
 ]
 
