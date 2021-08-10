@@ -1,4 +1,4 @@
-const { useMiddleWare } = require('vite-plugin-mocker')
+const { useMiddleWare } = require('vite-plugin-easy-mock')
 
 module.exports = {
     lintOnSave: false,

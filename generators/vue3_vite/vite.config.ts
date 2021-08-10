@@ -2,12 +2,13 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import styleImport from 'vite-plugin-style-import'
 import path from 'path'
-import viteMocker from 'vite-plugin-mocker'
+import viteMock from 'vite-plugin-easy-mock'
 
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
         vue(),
+        viteMock(),
         styleImport({
             libs: [
                 {
@@ -15,15 +16,14 @@ export default defineConfig({
                     esModule: true,
                     ensureStyleFile: true,
                     resolveStyle: (name) => {
-                        return `element-plus/lib/theme-chalk/${name}.css`
+                        return `element-plus/packages/theme-chalk/src/${name.substr(3)}.scss`
                     },
                     resolveComponent: (name) => {
                         return `element-plus/lib/${name}`
                     }
                 }
             ]
-        }),
-        viteMocker()
+        })
     ],
     resolve: {
         alias: {
@@ -50,14 +50,11 @@ export default defineConfig({
         base: './',
         // 代理
         proxy: {
-            '/api': {
-                target: 'https://www.xxx.com',
-                changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api/, '')
-            }
+            // '/api': {
+            //     target: 'https://www.xxx.com',
+            //     changeOrigin: true,
+            //     rewrite: (path) => path.replace(/^\/api/, '')
+            // }
         }
-    },
-    configureServer: ({ app }) => {
-        app.use()
     }
 })

@@ -9,16 +9,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, getCurrentInstance } from 'vue'
+import { defineComponent, ref } from 'vue'
+import useCurrentInstance from '@/utils/useCurrentInstance'
 
 export default defineComponent({
     name: 'Home',
     setup() {
-        const instance = getCurrentInstance()
+        const { proxy } = useCurrentInstance()
         const tableData = ref([])
         const getData = async () => {
-            const res = await instance?.appContext.config.globalProperties.$request('get', '/api/user/personList', {})
-            tableData.value = res
+            const res = await proxy.$request('get', '/user/personList')
+            tableData.value = res.data
         }
         getData()
         return {

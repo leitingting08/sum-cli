@@ -1,4 +1,5 @@
 import axios from './axios'
+import { Methods } from 'src/axios'
 import { ElLoading, ElMessage } from 'element-plus'
 /**
  * axios 请求封装
@@ -7,36 +8,40 @@ import { ElLoading, ElMessage } from 'element-plus'
  * @param {*} params 请求入参
  * @param {*} options 其他参数
  * options为对象格式,值：
- * isLoading(是否激活请求加载动画)
+ * @param {*} isLoading(是否激活请求加载动画)
+ * @param {*} isSuccessTip(是否展示提示成功tip)
  * 可根据需求扩展其他字段
  */
 
-const request = async (method: any, url: string, data: object = {}, options = { isLoading: true }) => {
-    let loadingInstance: any = null
+const request = async (method: Methods, url: string, params?: any, options?: Record<string, unknown>): Promise<any> => {
+    let loadingInstance = null
 
-    if (options && options.isLoading) {
+    if (options?.isLoading) {
         loadingInstance = ElLoading.service({ fullscreen: true })
     }
-    const result = await axios({ method, url, data }).catch((err) => {
-        ElMessage.error({
-            type: 'error',
-            message: err.message || '请求失败'
-        })
-    })
+
+    const result = await axios({ method: method, url, ...(method === 'get' ? { params } : { data: params }) }).catch(
+        (err) => {
+            ElMessage.error({
+                type: 'error',
+                message: err.message || '请求失败'
+            })
+        }
+    )
     loadingInstance && loadingInstance.close()
-    const { success, data: resultData, desc } = result.data
-    if (success) {
+    const res = result.data
+    if (options?.isSuccessTip && res.success) {
         ElMessage.success({
             type: 'success',
-            message: desc || '请求成功'
+            message: res.desc || '请求成功'
         })
-    } else {
+    } else if (!res.success) {
         ElMessage.error({
             type: 'error',
-            message: desc || '请求失败'
+            message: res.desc || '请求失败'
         })
     }
-    return resultData
+    return res
 }
 
 export default request
