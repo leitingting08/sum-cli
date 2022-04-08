@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "code": 0,
+  "desc": "列表获取成功",
+  "data": [
+    {
+      "filename": "文件名",
+      "filesize": 1024,
+      "status": 0
+   },
+   {
+      "filename": "文件名2",
+      "filesize": 1024,
+      "status": 1
+    }
+  ]
+}
