@@ -14,9 +14,10 @@
     </sum-table>
 </template>
 
-<script>
-import { defineComponent, ref, reactive, getCurrentInstance } from 'vue'
+<script lang="ts">
+import { defineComponent, ref, reactive } from 'vue'
 import SumTable from '@sum-ui/table'
+import useCurrentInstance from '@/utils/useCurrentInstance'
 
 export default defineComponent({
     name: 'Home',
@@ -51,19 +52,19 @@ export default defineComponent({
             background: true,
             layout: 'total, sizes, prev, pager, next, jumper'
         })
-        const handlePagenationChange = data => {
+        const handlePagenationChange = (data: any) => {
             console.log(data)
         }
 
-        const handleSelectionChange = data => {
+        const handleSelectionChange = (data: any) => {
             console.log(data)
         }
         // 单个删除
-        const removeItem = row => {
+        const removeItem = (row: { id: any }) => {
             // 执行删除操作
             console.log('删除', row, row.id)
         }
-        const { proxy } = getCurrentInstance()
+        const { proxy } = useCurrentInstance()
         const tableData = ref([])
         const getData = async () => {
             const res = await proxy.$request('get', '/file/list')
